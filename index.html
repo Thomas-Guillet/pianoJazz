@@ -7,19 +7,6 @@
 	</head>
 	<body>
 		<div id="start">
-			<!-- <audio id="musicMenu" src="src/media/play/play-audio.mp3" autoplay></audio> -->
-			<audio id="audio-c" src="src/media/notes/do.wav"></audio>
-			<audio id="audio-c-" src="src/media/notes/do-.wav"></audio>
-			<audio id="audio-d" src="src/media/notes/re.wav"></audio>
-			<audio id="audio-d-" src="src/media/notes/re-.wav"></audio>
-			<audio id="audio-e" src="src/media/notes/mi.wav"></audio>
-			<audio id="audio-f" src="src/media/notes/fa.wav"></audio>
-			<audio id="audio-f-" src="src/media/notes/fa-.wav"></audio>
-			<audio id="audio-g" src="src/media/notes/sol.wav"></audio>
-			<audio id="audio-g-" src="src/media/notes/sol-.wav"></audio>
-			<audio id="audio-a" src="src/media/notes/la.wav"></audio>
-			<audio id="audio-a-" src="src/media/notes/la-.wav"></audio>
-			<audio id="audio-h" src="src/media/notes/si.wav"></audio>
 			<div id="plate" class="plate">
 				<span id="play" class="start">play</span>
 				<span class="by">By Thomas G.</span>
@@ -392,56 +379,84 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="intro">
 			<video id="video-intro" src="src/media/intro/intro-video.mp4"></video>
-		</div>
-		<div id="title">
-			<span>JAZZ ISN'T DYING</span>
-		</div>
-
-		<div id="piano">
-			<div class="piano">
+			<div class="play-piano">
 				<div class="gamme">
-					<div id="c" onClick="play_note(this.id)" class="white">
+					<div id="c" onClick="play_note(this.id,1)" class="white">
 						C
 					</div>
-					<div id="c-" onClick="play_note(this.id)" class="black">
+					<div id="c-" onClick="play_note(this.id,1)" class="black">
 						C#
 					</div>
-					<div id="d" onClick="play_note(this.id)" class="white">
+					<div id="d" onClick="play_note(this.id,1)" class="white">
 						D
 					</div>
-					<div id="d-" onClick="play_note(this.id)" class="black">
+					<div id="d-" onClick="play_note(this.id,1)" class="black">
 						D#
 					</div>
-					<div id="e" onClick="play_note(this.id)" class="white">
+					<div id="e" onClick="play_note(this.id,1)" class="white">
 						E
 					</div>
-					<div id="f" onClick="play_note(this.id)" class="white">
+					<div id="f" onClick="play_note(this.id,1)" class="white">
 						F
 					</div>
-					<div id="f-" onClick="play_note(this.id)" class="black">
+					<div id="f-" onClick="play_note(this.id,1)" class="black">
 						F#
 					</div>
-					<div id="g" onClick="play_note(this.id)" class="white">
+					<div id="g" onClick="play_note(this.id,1)" class="white">
 						G
 					</div>
-					<div id="g-" onClick="play_note(this.id)" class="black">
+					<div id="g-" onClick="play_note(this.id,1)" class="black">
 						G#
 					</div>
-					<div id="a" onClick="play_note(this.id)" class="white">
+					<div id="a" onClick="play_note(this.id,1)" class="white">
 						A
 					</div>
-					<div id="a-" onClick="play_note(this.id)" class="black">
+					<div id="a-" onClick="play_note(this.id,1)" class="black">
 						A#
 					</div>
-					<div id="h" onClick="play_note(this.id)" class="white">
+					<div id="h" onClick="play_note(this.id,1)" class="white">
 						H
 					</div>
 				</div>
 			</div>
+			
+			<div class="title"><span class="jazz">JAZZ</span> <span class="isnt">ISN'T</span> <span class="dying">DYING</span></div>
+			<div id="translate-title" class="translate-title">
+				<span class="wrong">WRONG</span>
+				<div class="background-title"></div>
+			</div>
+			<div class="hero-bg neon-hero">
+			  <div class="hero-text">
+			    <div id="neon-discover" class="title">Discover Why =></div>
+			  </div>
+			 </div>
 		</div>
+
+
+		<!-- <div id="test">
+
+
+		</div> -->
+
+
+
+
+
+
+		<audio id="musicMenu" src="src/media/play/play-audio.mp3" autoplay loop></audio>
+		<audio id="audio-c" src="src/media/notes/do.wav"></audio>
+		<audio id="audio-c-" src="src/media/notes/do-.wav"></audio>
+		<audio id="audio-d" src="src/media/notes/re.wav"></audio>
+		<audio id="audio-d-" src="src/media/notes/re-.wav"></audio>
+		<audio id="audio-e" src="src/media/notes/mi.wav"></audio>
+		<audio id="audio-f" src="src/media/notes/fa.wav"></audio>
+		<audio id="audio-f-" src="src/media/notes/fa-.wav"></audio>
+		<audio id="audio-g" src="src/media/notes/sol.wav"></audio>
+		<audio id="audio-g-" src="src/media/notes/sol-.wav"></audio>
+		<audio id="audio-a" src="src/media/notes/la.wav"></audio>
+		<audio id="audio-a-" src="src/media/notes/la-.wav"></audio>
+		<audio id="audio-h" src="src/media/notes/si.wav"></audio>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 		<script 
 			type="text/javascript" 

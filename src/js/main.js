@@ -1,11 +1,19 @@
 var intro = document.getElementById("video-intro");
 var musicMenu = document.getElementById("musicMenu");
 const start = document.getElementById("play");
+const neon = document.getElementById("neon-discover");
 const touchesUp = document.querySelectorAll(".piano > .gamme > div");
 const touchesDown = document.querySelectorAll(".piano.inverse > .gamme > div");
 const plate = document.querySelectorAll("#plate");
+const testPanel = document.getElementById('translate-title');
+const titleParts = document.querySelectorAll(".title > span");
 const accord = false;
 var statutNote = new Array();
+
+
+
+
+
 
 // const audioc# = document.getElementById("audio-c#");
 
@@ -54,7 +62,7 @@ start.onclick = function(){
 	playAudioTransition();
 };
 
-function play_note(note)
+function play_note(note, click=null)
 {
 	if(accord == true){
 		if(note == 'c'){
@@ -82,7 +90,16 @@ function play_note(note)
 		audio.play();
 		const pianoNote = document.getElementById(note);
 		pianoNote.className += " selected";
+		if(click == '1'){
+			console.log(click+'remove');
+			setTimeout(function(){ pianoNote.classList.remove("selected"); }, 500);
+		}
 	}
+}
+
+function animateNeon(){
+	neon.className += " on";
+	setTimeout(function(){ neon.classList.remove("on"); }, 1000);
 }
 
 function stop_note(note)
@@ -239,3 +256,17 @@ document.onkeyup = function (e) {
     	statutNote[notePressed] = false;
     }
 };
+
+
+
+intro.addEventListener('ended',launchDiscover,false);
+function launchDiscover(e) {
+    TweenLite.to(testPanel, 1.5, {y:"-=100%"});
+	setTimeout(function(){
+		TweenMax.staggerTo(titleParts, 1.5, {display:'inline-block'}, 0.5);
+		setTimeout(function(){
+			TweenLite.to(neon, 1.5, {display:'block'});
+			var neonDiscover = setInterval(animateNeon, 2000);
+		}, 1500);
+	}, 1000);
+}
