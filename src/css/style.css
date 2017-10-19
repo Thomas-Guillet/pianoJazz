@@ -1,0 +1,167 @@
+body{
+	background-color: black;
+}
+
+#start{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#start > .plate{
+	position: absolute;
+	background-color: #3BBAB3;
+	width: 150%;
+	height: 80%;
+	top: 50%;
+	transform: translate(-15%,-50%) rotate(-5deg);
+	text-align: center;
+	z-index: 1;
+}
+#start > .plate > span.start{
+	font-family: 'Anton', sans-serif;
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+	color: #113E37;
+    transform: translate(-50%,-50%);
+    text-transform: uppercase;
+}
+#start > .plate > span.start:hover{
+	cursor: pointer;
+	color: rgba(17, 62, 55, 0.7);
+}
+#start > .plate > span.by{
+	padding-bottom: 100px;
+	font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    color: rgb(244, 255, 169);
+    transform: translate(-50%,-50%);
+}
+#start > .piano{
+	position: absolute;
+    width: 100%;
+    display: flex;
+    z-index: 0;
+}
+#start > .piano.inverse{
+	transform: rotate(180deg);
+	bottom: 0;
+	z-index: 0;
+}
+#start > .piano > .gamme{
+	display: flex;
+}
+#start > .piano > .gamme > .white{
+	position: relative;
+    height: 200px;
+    width: 40px;
+    background-color: rgb(244, 255, 169);
+    margin-left: 1px;
+    margin-right: 1px;
+
+}
+#start > .piano > .gamme > .black{
+	width: 20px;
+    height: 100px;
+    background-color: #44453F;
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+    z-index: 1;
+}
+
+#intro{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: -1;
+}
+#intro > video{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#title{
+	display: none;
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+}
+#title > span{
+	color: white;
+	font-family: 'Anton', sans-serif;
+	font-size: 80px;
+	position: absolute;
+    top: 50%;
+	transform: translate(-50%,-50%);
+	white-space: nowrap; 
+}
+
+#piano{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1;
+}
+#piano > .piano{
+	left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+	position: absolute;
+    display: flex;
+    z-index: 0;
+}
+#piano > .piano > .gamme{
+	display: flex;
+}
+#piano > .piano > .gamme > .white{
+	position: relative;
+    height: 200px;
+    width: 40px;
+    background-color: rgb(244, 255, 169);
+    margin-left: 1px;
+    margin-right: 1px;
+    text-align: center;
+    line-height: 350px;
+    font-weight: bold;
+    font-size: 25px;
+
+}
+#piano > .piano > .gamme > .white.selected{
+	background-color: #FBFFE1;
+}
+#piano > .piano > .gamme > .black{
+	width: 20px;
+    height: 100px;
+    background-color: #44453F;
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    line-height: 150px;
+    font-size: 12px;
+}
+#piano > .piano > .gamme > .black.selected{
+	background-color: #70706b;
+}
