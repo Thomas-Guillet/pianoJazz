@@ -1,5 +1,6 @@
 var intro = document.getElementById("video-intro");
 var musicMenu = document.getElementById("musicMenu");
+var jazzIsntDyingMusic = document.getElementById("jazzIsntDying");
 const start = document.getElementById("play");
 const neon = document.getElementById("neon-discover");
 const touchesUp = document.querySelectorAll(".piano > .gamme > div");
@@ -12,25 +13,29 @@ var statutNote = new Array();
 
 
 
-
-
-
 // const audioc# = document.getElementById("audio-c#");
 
 intro.volume = 0;
 introStatus = 0;
 
 function playAudioTransition(){
+	setTimeout(function(){
+		start.innerHTML = 'SKIP';
+		start.setAttribute("id", "skip");
+		const skip = document.getElementById("skip");
+		delete start.onclick;
+	}, 3000);
+
 	volumeMusic = 1;
 	volumeVideo = 0;
 	var loopVolume = setInterval(updateStartVolume, 10);
     function updateStartVolume() {
         if (volumeVideo < 0.999) {
-            volumeVideo += 0.01; 
+            volumeVideo += 0.01;
 			intro.volume = volumeVideo;
         }
         if (volumeMusic > 0) {
-            volumeMusic -= 0.01; 
+            volumeMusic -= 0.01;
 			musicMenu.volume = volumeMusic;
         }
         if(volumeVideo > 0.999 && volumeMusic < 0){
@@ -55,11 +60,16 @@ intro.onclick = function(){
 }
 
 start.onclick = function(){
-	TweenMax.staggerTo(touchesUp, 1, {y:"-=200"}, 0.03);
-	TweenMax.staggerTo(touchesDown, 1, {y:"-=200"}, 0.03);
-	TweenLite.to(plate, 2, {rotation:0});
-	TweenLite.to(plate, 1, {height:0}).delay(2);
-	playAudioTransition();
+	if(typeof(skip) !== 'undefined'){
+		intro.pause();
+		launchDiscover();
+	}else{
+		TweenMax.staggerTo(touchesUp, 1, {y:"-=200"}, 0.03);
+		TweenMax.staggerTo(touchesDown, 1, {y:"-=200"}, 0.03);
+		TweenLite.to(plate, 2, {rotation:0});
+		TweenLite.to(plate, 1, {height:0}).delay(2);
+		playAudioTransition();
+	}
 };
 
 function play_note(note, click=null)
@@ -112,7 +122,7 @@ function stop_note(note)
     function stopNoteVolume() {
     	if(statutNote[note] == false){
 	        if (volume > 0.01) {
-	            volume -= 0.01; 
+	            volume -= 0.01;
 				audio.volume = volume;
 	        }else{
 				audio.volume = 0;
@@ -200,7 +210,7 @@ document.onkeypress = function (e) {
 			statutNote[notePressed] = true;
     	}
     }
-	
+
 };
 
 document.onkeyup = function (e) {
@@ -258,10 +268,10 @@ document.onkeyup = function (e) {
 };
 
 
-
 intro.addEventListener('ended',launchDiscover,false);
 function launchDiscover(e) {
-    TweenLite.to(testPanel, 1.5, {y:"-=100%"});
+	jazzIsntDyingMusic.play();
+  TweenLite.to(testPanel, 1.5, {y:"-=100%"});
 	setTimeout(function(){
 		TweenMax.staggerTo(titleParts, 1.5, {display:'inline-block'}, 0.5);
 		setTimeout(function(){
@@ -269,4 +279,12 @@ function launchDiscover(e) {
 			var neonDiscover = setInterval(animateNeon, 2000);
 		}, 1500);
 	}, 1000);
+}
+
+neon.onclick = function(){
+	const bar = document.getElementById("bar");
+	bar.style.zIndex = "11";
+	bar.style.display = "block";
+	TweenLite.to(bar, 0.5, {y:0});
+// document.getElementById("bar").style.transform = "translateY(0%)";
 }
