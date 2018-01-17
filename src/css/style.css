@@ -1,3 +1,7 @@
+html{
+	overflow: hidden;
+}
+
 body{
 	background-color: black;
 }
@@ -107,52 +111,6 @@ body{
 	white-space: nowrap;
 }
 
-#start > .play-piano{
-	left: 50%;
-	transform: translateX(-50%);
-	top: 50%;
-	position: absolute;
-	display: flex;
-	display: none;
-	z-index: 0;
-}
-#start > .play-piano > .gamme{
-	display: flex;
-}
-#start > .play-piano > .gamme > .white{
-	position: relative;
-    height: 200px;
-    width: 40px;
-    background-color: rgb(244, 255, 169);
-    margin-left: 1px;
-    margin-right: 1px;
-    text-align: center;
-    line-height: 350px;
-    font-weight: bold;
-    font-size: 25px;
-    cursor: pointer;
-
-}
-#start > .play-piano > .gamme > .white.selected{
-	background-color: #FBFFE1;
-}
-#start > .play-piano > .gamme > .black{
-	width: 20px;
-    height: 100px;
-    background-color: #44453F;
-    position: relative;
-    margin-left: -10px;
-    margin-right: -10px;
-    z-index: 1;
-    text-align: center;
-    color: white;
-    line-height: 150px;
-    font-size: 12px;
-    cursor: pointer;
-}
-#start > .play-piano > .gamme > .black.selected{
-	background-color: #70706b;
-}
 #start > .translate-title {
 	position: absolute;
     width: 100%;
@@ -259,10 +217,10 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 20;
+    z-index: -5;
 }
 
-#history > #picture{
+#history > #history-picture{
     position: absolute;
     margin-left: auto;
     top: 0;
@@ -279,7 +237,7 @@ body{
     background-repeat: no-repeat;
 }
 
-#history > #content{
+#history > #history-content{
     position: absolute;
     top: 50%;
     left: 0;
@@ -303,6 +261,7 @@ body{
   left: 0;
   width: 5%;
   height: 100%;
+	display: none;
 }
 #arrow-prec:hover{
 	cursor: pointer;
@@ -319,6 +278,7 @@ body{
   right: 0;
   width: 5%;
   height: 100%;
+	display: none;
 }
 #arrow-next:hover{
 	cursor: pointer;
@@ -343,6 +303,129 @@ body{
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
+}
+
+#bottom-menu{
+	z-index: 15;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 4px;
+	height: 50px;
+}
+#bottom-menu > div > img {
+	width: 30px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#bottom-menu > div {
+	display: inline-block;
+	padding: 10px;
+}
+#bottom-menu > div:hover{
+	cursor: pointer;
+	padding-bottom: 7px;
+	border-bottom: solid 3px #ebce28;
+}
+
+#close-history{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 10%;
+	height: 50px;
+}
+#close-history:hover{
+	cursor: pointer;
+}
+#close-history > img{
+	height: 100%;
+}
+
+#play-piano-contain{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+.play-piano{
+	left: 50%;
+	transform: translateX(-50%);
+	top: 50%;
+	position: absolute;
+	display: flex;
+	z-index: 0;
+}
+.play-piano > .gamme{
+	display: flex;
+}
+.play-piano > .gamme > .white{
+	position: relative;
+    height: 200px;
+    width: 40px;
+    background-color: white;
+    margin-left: 1px;
+    margin-right: 1px;
+    text-align: center;
+    line-height: 350px;
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+
+}
+.play-piano > .gamme > .white.selected{
+	background-color: #FBFFE1;
+}
+.play-piano > .gamme > .black{
+	width: 20px;
+    height: 100px;
+    background-color: #44453F;
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    line-height: 150px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.play-piano > .gamme > .black.selected{
+	background-color: #70706b;
+}
+
+#measure{
+	position: absolute;
+	top: 15%;
+	left: 0%;
+	height: auto;
+	width: 100%;
+}
+#measure > div{
+	border-top: solid 2px white;
+	margin-top: 30px;
+}
+#measure-action{
+	position: absolute;
+	top: 15%;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 250px;
+	width: 700px;
+	border-left: solid 5px white;
+	border-right: solid 5px white;
+	overflow-x: hidden;
+}
+
+.noteMeasure{
+	position: absolute;
+	right: -28px;
+	width: 28px;
+	height: 28px;
+	background: red;
 }
 
 

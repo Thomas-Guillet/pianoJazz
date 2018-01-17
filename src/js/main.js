@@ -9,12 +9,83 @@ const plate = document.querySelectorAll("#plate");
 const testPanel = document.getElementById('translate-title');
 const titleParts = document.querySelectorAll(".title > span");
 const accord = false;
+var historyIndent = 0;
+var arrowNext = document.getElementById("arrow-next");
+var arrowPrec = document.getElementById("arrow-prec");
+var openHistory = document.getElementById("menu-history");
+
 var statutNote = new Array();
 var historyInfo = new Array(
-	['lol', 'drole'],
-	['az', 'azert'],
+	['src/media/img/Louis_Armstrong.jpg', 'Jazz is a music genre that originated in the African-American communities of New Orleans, United States,<br/><br/> in the late 19th and early 20th centuries, and developed from roots in blues and ragtime.<br/><br/> Jazz is seen by many as America\'s classical music.<br/><br/> Since the 1920s Jazz Age, jazz has become recognized as a major form of musical expression. It then emerged in the form of independent traditional and popular musical styles, all linked by the common bonds of African-American and European-American musical parentage with a performance orientation.<br/><br/> Jazz is characterized by swing and blue notes, call and response vocals, polyrhythms and improvisation.'],
+	['src/media/img/18-original.jpg', 'Jazz originated in the late 19th to early 20th century as interpretations of American and European classical music entwined with African and slave folk songs and the influences of West African culture. Its composition and style have changed many times throughout the years with each performer\'s personal interpretation and improvisation, which is also one of the greatest appeals of the genre.'],
 );
-console.log(historyInfo[1][1]);
+var historyPicture = document.getElementById("history-picture");
+var historyContent = document.getElementById("history-content");
+var historyContain = document.getElementById("history");
+var closeHistory = document.getElementById("close-history");
+
+
+function displayNote(height){
+	var newNote = document.createElement('span');
+	newNote.className = "noteMeasure";
+	newNote.style.top = height+"px";
+	var measureAction = document.getElementById('measure-action');
+	measureAction.appendChild(newNote);
+	TweenLite.to(newNote, 7, { ease: Power0.easeNone, x: -728 });
+}
+
+closeHistory.onclick = function(){
+	historyContain.style.zIndex = '-5';
+}
+openHistory.onclick = function(){
+	historyIndent = 0;
+	historyContain.style.zIndex = '20';
+	historyPicture.style.backgroundImage = "url("+historyInfo[historyIndent][0]+")";
+	historyContent.innerHTML = historyInfo[historyIndent][1];
+	if(historyInfo.length > (historyIndent+1)){
+		arrowNext.style.display = "block";
+	}else{
+		arrowNext.style.display = "none";
+	}
+	if(historyIndent == 0){
+		arrowPrec.style.display = "none";
+	}else{
+		arrowPrec.style.display = "block";
+	}
+}
+
+arrowNext.onclick = function(){
+	historyIndent++;
+	historyPicture.style.backgroundImage = "url("+historyInfo[historyIndent][0]+")";
+	historyContent.innerHTML = historyInfo[historyIndent][1];
+	if(historyInfo.length > (historyIndent+1)){
+		arrowNext.style.display = "block";
+	}else{
+		arrowNext.style.display = "none";
+	}
+	if(historyIndent == 0){
+		arrowPrec.style.display = "none";
+	}else{
+		arrowPrec.style.display = "block";
+	}
+}
+arrowPrec.onclick = function(){
+	historyIndent--;
+	historyPicture.style.backgroundImage = "url("+historyInfo[historyIndent][0]+")";
+	historyContent.innerHTML = historyInfo[historyIndent][1];
+	if(historyInfo.length > (historyIndent+1)){
+		arrowNext.style.display = "block";
+	}else{
+		arrowNext.style.display = "none";
+	}
+	if(historyIndent == 0){
+		arrowPrec.style.display = "none";
+	}else{
+		arrowPrec.style.display = "block";
+	}
+}
+
+
 
 
 
@@ -146,6 +217,7 @@ document.onkeypress = function (e) {
     	const notePressed = 'c';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('176');
 			statutNote[notePressed] = true;
     	}
     }else if(e.keyCode == 115){
@@ -158,6 +230,7 @@ document.onkeypress = function (e) {
     	const notePressed = 'd';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('161');
 			statutNote[notePressed] = true;
     	}
     }else if(e.keyCode == 100){
@@ -170,12 +243,14 @@ document.onkeypress = function (e) {
     	const notePressed = 'e';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('144');
 			statutNote[notePressed] = true;
     	}
     }else if(e.keyCode == 118){
     	const notePressed = 'f';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('129');
 			statutNote[notePressed] = true;
     	}
     }else if(e.keyCode == 103){
@@ -188,6 +263,7 @@ document.onkeypress = function (e) {
     	const notePressed = 'g';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('112');
 			statutNote[notePressed] = true;
     	}
     }else if(e.keyCode == 104){
@@ -200,6 +276,7 @@ document.onkeypress = function (e) {
     	const notePressed = 'a';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('97');
 			statutNote[notePressed] = true;
     	}
     }else if(e.keyCode == 106){
@@ -212,6 +289,7 @@ document.onkeypress = function (e) {
     	const notePressed = 'h';
     	if(statutNote[notePressed] == false){
     		play_note(notePressed);
+				displayNote('80');
 			statutNote[notePressed] = true;
     	}
     }
