@@ -297,6 +297,53 @@ body{
     background-color: rgba(0, 0, 0, .5);
 }
 
+#arrow-prec{
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 5%;
+  height: 100%;
+}
+#arrow-prec:hover{
+	cursor: pointer;
+}
+#arrow-prec > img{
+	margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%)rotate(90deg);
+	width: 100%;
+}
+
+#arrow-next{
+	position: absolute;
+  top: 0;
+  right: 0;
+  width: 5%;
+  height: 100%;
+}
+#arrow-next:hover{
+	cursor: pointer;
+}
+#arrow-next > img{
+	margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%)rotate(-90deg);
+	width: 100%;
+}
+
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.rotate-90 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
 
 
 

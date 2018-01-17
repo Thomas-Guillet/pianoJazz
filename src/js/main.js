@@ -10,6 +10,11 @@ const testPanel = document.getElementById('translate-title');
 const titleParts = document.querySelectorAll(".title > span");
 const accord = false;
 var statutNote = new Array();
+var historyInfo = new Array(
+	['lol', 'drole'],
+	['az', 'azert'],
+);
+console.log(historyInfo[1][1]);
 
 
 
