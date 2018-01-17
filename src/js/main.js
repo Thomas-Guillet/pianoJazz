@@ -3,6 +3,8 @@ var musicMenu = document.getElementById("musicMenu");
 musicMenu.volume = "0.1";
 var jazzIsntDyingMusic = document.getElementById("jazzIsntDying");
 var jukebox1930 = document.getElementById("1930");
+var jukebox1940 = document.getElementById("1940");
+var jukebox1950 = document.getElementById("1950");
 const start = document.getElementById("play");
 const neon = document.getElementById("neon-discover");
 const touchesUp = document.querySelectorAll(".piano > .gamme > div");
@@ -31,7 +33,8 @@ var historyInfo = new Array(
 );
 var jukeInfo = new Array(
 	['1930', 'In the Mood by the Glenn Miller Band', '<br />Swing music bubbled up from the still-simmering Depression in the 30s and skewed jazz closer than ever before to popular music.<br/> In The Mood is its enduring song. The Glen Miller Band had some modicum of success before Mood, but their breakthrough came in 1939 during a three-month stint at Glen Island Casino in New Rochelle, New York. Performances at the casino were broadcast to many via the radio, making Glen Island a springboard for numerous groups in the decade, though arguably none more than Miller. The most important thing for Glenn s success was that he recorded In the Mood while he was at the casino, biographer George T. Simon told The New York Times. That made him the Michael Jackson of his day.<br/><br/>The song is buoyed by its unmistakable opening sax riff, meant to beckon jitterbuggers to the dance floor, and highlighted by a mid-song decrescendo fake-out (think Shout by the Isley Brothers).<br/><br/><b>Bonus Fact</b>: Jazz saxophonist Joe Garland, not Glenn Miller, actually composed the song, and the iconic opening lick may have been lifted from Wingy Manone s 1930s tune Tar Paper Stomp. Musicians played fast and loose with copyright laws in those days.'],
-	['1940', 'In the Mood by the Glenn Miller Band', '<br />Swing music bubbled up from the still-simmering Depression in the 30s and skewed jazz closer than ever before to popular music.<br/> In The Mood is its enduring song. The Glen Miller Band had some modicum of success before Mood, but their breakthrough came in 1939 during a three-month stint at Glen Island Casino in New Rochelle, New York. Performances at the casino were broadcast to many via the radio, making Glen Island a springboard for numerous groups in the decade, though arguably none more than Miller. The most important thing for Glenn s success was that he recorded In the Mood while he was at the casino, biographer George T. Simon told The New York Times. That made him the Michael Jackson of his day.<br/><br/>The song is buoyed by its unmistakable opening sax riff, meant to beckon jitterbuggers to the dance floor, and highlighted by a mid-song decrescendo fake-out (think Shout by the Isley Brothers).<br/><br/><b>Bonus Fact</b>: Jazz saxophonist Joe Garland, not Glenn Miller, actually composed the song, and the iconic opening lick may have been lifted from Wingy Manone s 1930s tune Tar Paper Stomp. Musicians played fast and loose with copyright laws in those days.'],
+	['1940', 'Round Midnight by Thelonius Monk', 'Bebop — musically complex and pioneered by players like Monk, Charlie Parker and Clifford Brown was a swing on the pendulum from the simple music of the 30s. Improvisation took flight, time signatures shifted, chords were voiced differently. Monks crawling, brooding  Round Midnight  embodies the shift well.<br/><br/>The song, with its plodding hi-hats, angular piano stabs and floating trumpet/sax harmonies is effortlessly complex and remains the most recorded jazz standard of all time. On listen, it brilliantly paints a picture of a dusky, stale bar at last call, and fittingly lasts a fleeting three minutes before screeching to a stop.<br/><br/>Bonus Fact: The standard is often credited with rebirthing Miles Davis  career after the trumpet player s struggles with drugs. Davis caught the ear of a Columbia Records scout while playing the tune alongside Monk at the 1955 Newport Jazz Festival.'],
+	['1950', 'Take Five by Dave Brubeck', 'Brubeck s breezy, structured West Coast jazz came into vogue in the 1950s as an antidote to the abstractions of bebop.  Take Five,  the best-selling jazz single of all time, was an unlikely hit spurred by Brubeck s visit to Turkey, where he heard street musicians experimenting with unorthodox time signatures. The final version of the song, with its signature 5/4 time and repeated piano vamp, was recorded in two takes and originally thought to be a throwaway.<br/><br/>Alto saxophonist Paul Desmond turns in a subtly great performance, but it s rock solid drummer Joe Morello who showcases his mastery on the tune. His unwavering backbeat eventually cedes to a drum solo that is equal parts spacious and grooving, playfully gliding over the top of Brubeck s piano line before kicking Desmond back in. The quartet would often close concerts with the song, leaving the stage one by one, until only Morello remained shredding the drums.<br/><br/>Bonus Fact: Jazz musicians fight with their record labels, too. Brubeck s 1959 LP Time Out made Columbia nervous, with its original songs and abnormal time signatures. Label executives at Columbia, who preferred safe reworkings of old jazz standards, only agreed to release Time Out after the quartet recorded a more conventional album called Gone With The Wind to hedge their bet. Time Out went on to become the first jazz record to sell over a million copies.'],
 );
 var historyPicture = document.getElementById("history-picture");
 var historyContent = document.getElementById("history-content");
@@ -76,18 +79,15 @@ openHistory.onclick = function(){
 closeJuke.onclick = function(){
 	jukeContain.style.zIndex = '-5';
 	var vol = 0;
-	var interval = 200; // 200ms interval
+	var interval = 200;
 
 	var fadeout = setInterval(
 		function() {
-			// Reduce volume by 0.05 as long as it is above 0
-			// This works as long as you start with a multiple of 0.05!
 			if (vol < 0.1) {
 				vol += 0.01;
 				jazzIsntDyingMusic.volume = vol;
 			}
 			else {
-				// Stop the setInterval when 0 is reached
 				clearInterval(fadeout);
 			}
 		}, interval);
@@ -115,18 +115,15 @@ openJuke.onclick = function(){
 	TweenMax.to(closeJuke, 2, { bottom:100, ease:Power2.easeInOut, opacity:1 })
 	jukeContain.style.zIndex = '20';
 	var vol = 0.1;
-	var interval = 200; // 200ms interval
+	var interval = 200;
 
 	var fadeout = setInterval(
 		function() {
-			// Reduce volume by 0.05 as long as it is above 0
-			// This works as long as you start with a multiple of 0.05!
 			if (vol > 0) {
 				vol -= 0.01;
 				jazzIsntDyingMusic.volume = vol;
 			}
 			else {
-				// Stop the setInterval when 0 is reached
 				clearInterval(fadeout);
 			}
 		}, interval);
@@ -148,9 +145,23 @@ function playPauseJukebox(action, year){
 			jukebox1930.volume = 0.5;
 			jukebox1930.play();
 		}
+		if(year == '1940'){
+			jukebox1940.volume = 0.5;
+			jukebox1940.play();
+		}
+		if(year == '1950'){
+			jukebox1950.volume = 0.5;
+			jukebox1950.play();
+		}
 	}else{
 		if(year == '1930'){
 			jukebox1930.pause();
+		}
+		if(year == '1940'){
+			jukebox1940.pause();
+		}
+		if(year == '1950'){
+			jukebox1950.pause();
 		}
 	}
 }
@@ -159,18 +170,15 @@ function playPauseJukebox(action, year){
 closePiano.onclick = function(){
 	pianoContain.style.zIndex = '-5';
 	var vol = 0;
-	var interval = 200; // 200ms interval
+	var interval = 200;
 
 	var fadeout = setInterval(
 		function() {
-			// Reduce volume by 0.05 as long as it is above 0
-			// This works as long as you start with a multiple of 0.05!
 			if (vol < 0.1) {
 				vol += 0.01;
 				jazzIsntDyingMusic.volume = vol;
 			}
 			else {
-				// Stop the setInterval when 0 is reached
 				clearInterval(fadeout);
 			}
 		}, interval);
@@ -183,18 +191,15 @@ openPiano.onclick = function(){
 	TweenMax.to(closePiano, 2, { bottom:100, ease:Power2.easeInOut, opacity:1 })
 	pianoContain.style.zIndex = '20';
 	var vol = 0.1;
-	var interval = 200; // 200ms interval
+	var interval = 200;
 
 	var fadeout = setInterval(
 		function() {
-			// Reduce volume by 0.05 as long as it is above 0
-			// This works as long as you start with a multiple of 0.05!
 			if (vol > 0) {
 				vol -= 0.01;
 				jazzIsntDyingMusic.volume = vol;
 			}
 			else {
-				// Stop the setInterval when 0 is reached
 				clearInterval(fadeout);
 			}
 		}, interval);
@@ -247,9 +252,10 @@ arrowPrec.onclick = function(){
 	}, 500);
 }
 arrowJukeNext.onclick = function(){
-	jukeIndent++;
 	pauseJuke.style.display = "none"
 	playJuke.style.display = "block"
+	playPauseJukebox('pause', jukeInfo[jukeIndent][0]);
+	jukeIndent++;
 	TweenMax.to(jukeYear, 0.5, { opacity:0 })
 	TweenMax.to(jukeTitle, 0.5, { opacity:0 })
 	TweenMax.to(pauseJuke, 0.5, { opacity:0 })
@@ -277,9 +283,10 @@ arrowJukeNext.onclick = function(){
 	}, 500);
 }
 arrowJukePrec.onclick = function(){
-	jukeIndent--;
 	pauseJuke.style.display = "none"
 	playJuke.style.display = "block"
+	playPauseJukebox('pause', jukeInfo[jukeIndent][0]);
+	jukeIndent--;
 	TweenMax.to(jukeYear, 0.5, { opacity:0 })
 	TweenMax.to(jukeTitle, 0.5, { opacity:0 })
 	TweenMax.to(pauseJuke, 0.5, { opacity:0 })
